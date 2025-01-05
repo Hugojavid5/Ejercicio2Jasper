@@ -6,7 +6,7 @@
     <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="855"/>
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ContraDockerExamen1"/>
     <queryString language="SQL">
-        <![CDATA[SELECT  agenda.persona.dni , agenda.persona.nombre , agenda.persona.apellido1 , agenda.persona.apellido2 FROM  agenda.persona]]>
+        <![CDATA[SELECT agenda.persona.dni, agenda.persona.nombre, agenda.persona.apellido1, agenda.persona.apellido2 FROM agenda.persona]]>
     </queryString>
     <field name="dni" class="java.lang.String">
         <property name="com.jaspersoft.studio.field.name" value="dni"/>
@@ -67,36 +67,36 @@
             </textField>
             <subreport>
                 <reportElement x="0" y="40" width="270" height="240" uuid="f68330e6-8106-44d3-8c3f-ed2727fa6606"/>
-                <parametersMapExpression><![CDATA[new java.util.HashMap() {{
-    put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
-    put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
-    return this;
-}}
-]]></parametersMapExpression>
+                <parametersMapExpression><![CDATA[
+                    new java.util.HashMap() {{
+                        put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
+                        put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
+                        return this;
+                    }}
+                ]]></parametersMapExpression>
                 <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
                 <subreportExpression><![CDATA["email.jrxml"]]></subreportExpression>
             </subreport>
             <subreport>
                 <reportElement x="290" y="40" width="264" height="240" uuid="e7b7ee91-ee78-4b13-8604-7419191c01a3"/>
-                <parametersMapExpression><![CDATA[new java.util.HashMap() {{
-    put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
-    put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
+                <parametersMapExpression><![CDATA[
+                    new java.util.HashMap() {{
+                        put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
+                        put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
 
-    // Agregar el número de teléfono usando el DNI
-    String dni = $F{dni};
-    String telefono = ""; // Variable para almacenar el número de teléfono
+                        // Agregar el número de teléfono usando el DNI
+                        String dni = $F{dni};
+                        String telefono = ""; // Variable para almacenar el número de teléfono
 
-    // Aquí asumes que la consulta del subinforme ya está configurada para usar el DNI como filtro
-    // Si la persona tiene un teléfono, lo recuperas con una consulta adicional
-    // Este paso debe ser hecho en el subinforme a través de la expresión de filtro de la consulta.
-    if ($F{telefonos} != null && $F{telefonos}.containsKey(dni)) {
-        telefono = $F{telefonos}.get(dni);  // Asumiendo que tienes un mapa de teléfonos indexados por DNI
-    }
+                        // Aquí asumes que la consulta del subinforme ya está configurada para usar el DNI como filtro
+                        if ($F{telefonos} != null && $F{telefonos}.containsKey(dni)) {
+                            telefono = $F{telefonos}.get(dni);  // Asumiendo que tienes un mapa de teléfonos indexados por DNI
+                        }
 
-    put("telefono", telefono);  // Pasas el número de teléfono como parámetro al subinforme
-    return this;
-}}
-]]></parametersMapExpression>
+                        put("telefono", telefono);  // Pasas el número de teléfono como parámetro al subinforme
+                        return this;
+                    }}
+                ]]></parametersMapExpression>
                 <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
                 <subreportExpression><![CDATA["telefono.jasper"]]></subreportExpression>
             </subreport>

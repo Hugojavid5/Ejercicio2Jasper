@@ -62,6 +62,7 @@ public class VentanaController {
         }
     }
 
+
     private void mostrarError(String titulo, String mensaje) {
         // Crear una ventana emergente de tipo "error"
         Alert alert = new Alert(Alert.AlertType.ERROR);
