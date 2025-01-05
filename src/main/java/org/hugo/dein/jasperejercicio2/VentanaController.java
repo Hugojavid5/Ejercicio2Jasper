@@ -66,9 +66,9 @@ public class VentanaController {
         // Crear una ventana emergente de tipo "error"
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
-        alert.setHeaderText(null); // No queremos un encabezado
-        alert.setContentText(mensaje); // El mensaje que queremos mostrar
-        alert.showAndWait(); // Mostrar el mensaje y esperar a que el usuario lo cierre
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 
     @FXML
@@ -80,7 +80,6 @@ public class VentanaController {
             parameters.put("IMAGE_PATH", getClass().getResource("/imagenes/").toString());
             generarReporte("/Jasper/InformePConCalculos.jasper", parameters);
         } else if (rbPSubinformes.isSelected()) {
-            //este informe no me funciona
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("Resource_PATH", getClass().getResource("/jrxml/").toString());
             generarReporte("/Jasper/Subinformes.jasper", parameters);
@@ -89,6 +88,6 @@ public class VentanaController {
 
     @FXML
     void Cancelar(ActionEvent event) {
-        System.exit(0); // O usa una referencia a la ventana principal si deseas cerrarla específicamente
+        System.exit(0);
     }
 }
