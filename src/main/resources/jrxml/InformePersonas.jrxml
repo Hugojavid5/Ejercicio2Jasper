@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                                  http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="InformePersonas"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="857b230e-ad73-48f0-adb2-5abdf85ccd82">
+
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ContraDockerExamen1"/>
+
+    <style name="HeaderStyle" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+
+    <style name="ColumnStyle" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+
+    <queryString language="SQL">
+        <![CDATA[SELECT dni, nombre, apellido1, apellido2 FROM agenda.persona]]>
+    </queryString>
+
+    <field name="dni" class="java.lang.String"/>
+    <field name="nombre" class="java.lang.String"/>
+    <field name="apellido1" class="java.lang.String"/>
+    <field name="apellido2" class="java.lang.String"/>
+
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+
+    <title>
+        <band height="50" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="595" height="50" uuid="1"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Reporte de Personas]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <pageHeader>
+        <band height="35" splitType="Stretch">
+            <textField>
+                <reportElement x="400" y="5" width="180" height="30" uuid="2"/>
+                <textElement textAlignment="Right">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+
+    <columnHeader>
+        <band height="30" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="140" height="30" uuid="3"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[DNI]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="140" y="0" width="140" height="30" uuid="4"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="0" width="140" height="30" uuid="5"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Apellido 1]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="420" y="0" width="140" height="30" uuid="6"/>
+                <textElement textAlignment="Center">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Apellido 2]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="30" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="140" height="30" uuid="7"/>
+                <textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="140" y="0" width="140" height="30" uuid="8"/>
+                <textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="0" width="140" height="30" uuid="9"/>
+                <textFieldExpression><![CDATA[$F{apellido1}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="420" y="0" width="140" height="30" uuid="10"/>
+                <textFieldExpression><![CDATA[$F{apellido2}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+</jasperReport>

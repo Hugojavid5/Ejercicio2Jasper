@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="telefono" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="22cc6381-7347-4d85-a6f5-69b6660a4bcd">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="106"/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="889"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ContraDockerExamen1"/>
+    <queryString language="SQL">
+        <![CDATA[SELECT  agenda.telefono.telefono ,  agenda.telefono.dni ,  agenda.persona.dni from  agenda.telefono ,  agenda.persona]]>
+    </queryString>
+    <field name="telefono" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="telefono"/>
+        <property name="com.jaspersoft.studio.field.label" value="telefono"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="telefono"/>
+    </field>
+    <field name="dni" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="dni"/>
+        <property name="com.jaspersoft.studio.field.label" value="dni"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="telefono"/>
+    </field>
+    <field name="COLUMN_3" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="dni"/>
+        <property name="com.jaspersoft.studio.field.label" value="dni"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="80" splitType="Stretch">
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="40" width="279" height="40" forecolor="#2008FF" backcolor="#A4CDE0" uuid="74d5c4b3-4e9f-4d98-8f80-25b4a3963aff"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20"/>
+                </textElement>
+                <text><![CDATA[TELEFONO]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="75" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <line>
+                <reportElement x="-1" y="34" width="280" height="1" uuid="69b7a574-d258-4a5d-a2f7-3f7273d7b783"/>
+            </line>
+            <textField>
+                <reportElement x="0" y="4" width="278" height="30" uuid="f9384d33-b15c-4001-8190-8c0035bc8ce5"/>
+                <textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Subinformes" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a0030c4-8359-4337-8683-0194f253a99d">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="140"/>
+    <property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="855"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="ContraDockerExamen1"/>
+    <queryString language="SQL">
+        <![CDATA[SELECT  agenda.persona.dni , agenda.persona.nombre , agenda.persona.apellido1 , agenda.persona.apellido2 FROM  agenda.persona]]>
+    </queryString>
+    <field name="dni" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="dni"/>
+        <property name="com.jaspersoft.studio.field.label" value="dni"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+    </field>
+    <field name="nombre" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="nombre"/>
+        <property name="com.jaspersoft.studio.field.label" value="nombre"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+    </field>
+    <field name="apellido1" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+        <property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+    </field>
+    <field name="apellido2" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+        <property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+    </field>
+    <background>
+        <band/>
+    </background>
+    <title>
+        <band height="72">
+            <frame>
+                <reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="b8109f93-509a-498e-8d76-20d90369a346"/>
+                <staticText>
+                    <reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="8ef3ff8a-9b2a-4ac5-9c57-1e81a74b6fd4"/>
+                    <textElement>
+                        <font size="34" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[AGENDA]]></text>
+                </staticText>
+            </frame>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="13"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="21">
+            <line>
+                <reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="29338eaa-5bb6-4605-b1ab-2a31583cde3a"/>
+            </line>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="316">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="33" width="555" height="1" uuid="d52110bc-398b-4096-9331-f076de8324e4"/>
+            </line>
+            <textField>
+                <reportElement x="0" y="3" width="554" height="30" uuid="87a1fc7f-2b4c-4680-86a7-bcb4a813c67c"/>
+                <textFieldExpression><![CDATA[$F{nombre}+" "+$F{apellido1}+" "+$F{apellido2}]]></textFieldExpression>
+            </textField>
+            <subreport>
+                <reportElement x="0" y="40" width="270" height="240" uuid="f68330e6-8106-44d3-8c3f-ed2727fa6606"/>
+                <parametersMapExpression><![CDATA[new java.util.HashMap() {{
+    put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
+    put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
+    return this;
+}}
+]]></parametersMapExpression>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA["email.jrxml"]]></subreportExpression>
+            </subreport>
+            <subreport>
+                <reportElement x="290" y="40" width="264" height="240" uuid="e7b7ee91-ee78-4b13-8604-7419191c01a3"/>
+                <parametersMapExpression><![CDATA[new java.util.HashMap() {{
+    put("nombreUsuario", $F{nombre}.toLowerCase() + "@dm2.com");
+    put("primerApellido", $F{apellido1}.toLowerCase() + "@dm2.com");
+
+    // Agregar el número de teléfono usando el DNI
+    String dni = $F{dni};
+    String telefono = ""; // Variable para almacenar el número de teléfono
+
+    // Aquí asumes que la consulta del subinforme ya está configurada para usar el DNI como filtro
+    // Si la persona tiene un teléfono, lo recuperas con una consulta adicional
+    // Este paso debe ser hecho en el subinforme a través de la expresión de filtro de la consulta.
+    if ($F{telefonos} != null && $F{telefonos}.containsKey(dni)) {
+        telefono = $F{telefonos}.get(dni);  // Asumiendo que tienes un mapa de teléfonos indexados por DNI
+    }
+
+    put("telefono", telefono);  // Pasas el número de teléfono como parámetro al subinforme
+    return this;
+}}
+]]></parametersMapExpression>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA["telefono.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+    <columnFooter>
+        <band/>
+    </columnFooter>
+    <pageFooter>
+        <band height="17">
+            <textField>
+                <reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ca34ff70-3d10-439e-a768-c3e762c556cf"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="764a4908-616f-4504-842d-e017aa27675f"/>
+                <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement x="0" y="4" width="100" height="13" uuid="950e2b2a-5c81-4790-b38a-5e7cf4663e0c"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band/>
+    </summary>
+</jasperReport>

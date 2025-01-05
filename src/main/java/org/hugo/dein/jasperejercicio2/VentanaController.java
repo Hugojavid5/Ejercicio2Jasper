@@ -78,7 +78,7 @@ public class VentanaController {
         } else if (rbPCalculos.isSelected()) {
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("IMAGE_PATH", getClass().getResource("/imagenes/").toString());
-            generarReporte("/Jasper/InformePConCalculos.jasper", parameters);
+            generarReporte("/Jasper/InformePersonasConCalculos.jasper", parameters);
         } else if (rbPSubinformes.isSelected()) {
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("Resource_PATH", getClass().getResource("/jrxml/").toString());
