@@ -1,0 +1,37 @@
+<jasperReport name="Telefono" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e70a16e7-3a8c-4c25-af38-7db97aae20f6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="dni" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT t.telefono
+FROM agenda.telefono t
+WHERE t.dni = $P{dni}
+]]></query>
+	<field name="telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefono"/>
+	</field>
+	<background splitType="Stretch"/>
+	<columnHeader height="40" splitType="Stretch">
+		<element kind="rectangle" uuid="d66ed54a-4f91-43d6-b42a-4e5263b60aec" x="-20" y="0" width="200" height="40" backcolor="#E8E8E8">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="8ce3ef28-f640-4950-837b-ed7ec6573f00" x="-20" y="0" width="200" height="40" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[TELEFONOS]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<element kind="textField" uuid="2d3551f4-00c4-48d4-b866-263a8c7a62e8" x="-20" y="12" width="160" height="20" fontSize="14.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{telefono}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7f39fb8-858c-423c-b936-e2b016c62d39"/>
+			</element>
+			<element kind="line" uuid="364536ce-d8e8-4f8a-b63d-98cebbd69116" x="-20" y="40" width="160" height="1">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

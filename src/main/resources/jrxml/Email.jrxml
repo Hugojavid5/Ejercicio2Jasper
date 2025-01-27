@@ -1,0 +1,35 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="Email" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98dbaac0-c514-46f4-a5f1-308d5e83e46a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<parameter name="dni" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT e.email
+FROM agenda.email e
+WHERE e.dni = $P{dni}]]></query>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="email"/>
+	</field>
+	<background splitType="Stretch"/>
+	<columnHeader height="40" splitType="Stretch">
+		<element kind="rectangle" uuid="a5fe3601-e388-4642-8eef-52bb89fa7d69" x="-20" y="0" width="160" height="40" backcolor="#E8E8E8">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="160c7245-98ba-4d67-9167-4e7b3e5fb406" x="-20" y="0" width="160" height="40" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[EMAIL]]></text>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<element kind="textField" uuid="65ac7c56-edad-4a6d-9244-228c89d1fc39" x="-20" y="12" width="160" height="20" fontSize="14.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{email}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7f39fb8-858c-423c-b936-e2b016c62d39"/>
+			</element>
+			<element kind="line" uuid="b6b01ac6-921d-4ed0-b0c0-f0c8c1aa7942" x="-20" y="40" width="160" height="1">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

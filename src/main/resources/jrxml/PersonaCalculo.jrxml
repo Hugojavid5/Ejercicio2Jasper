@@ -1,0 +1,219 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="PersonaCalculo" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7809ad9-0b55-4414-8c66-69becee34009">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<dataset name="PersonaCalculo" uuid="65659da6-1792-4c9b-aae1-c36e6d1d75d3">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+		<query language="SQL"><![CDATA[SELECT 
+    p.dni, 
+    p.nombre, 
+    p.apellido1, 
+    p.apellido2, 
+    p.edad, 
+    MAX(e.email) AS login
+FROM 
+    agenda.persona p
+LEFT JOIN 
+    agenda.email e ON p.dni = e.dni
+GROUP BY 
+    p.dni, p.nombre, p.apellido1, p.apellido2, p.edad
+]]></query>
+		<field name="dni" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="dni"/>
+			<property name="com.jaspersoft.studio.field.label" value="dni"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="apellido1" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="apellido2" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="edad" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="edad"/>
+			<property name="com.jaspersoft.studio.field.label" value="edad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="login" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="login"/>
+			<property name="com.jaspersoft.studio.field.label" value="login"/>
+		</field>
+	</dataset>
+	<parameter name="IMAGE_PATH" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT 
+    p.dni, 
+    p.nombre, 
+    p.apellido1, 
+    p.apellido2, 
+    p.edad, 
+    MAX(e.email) AS login
+FROM 
+    agenda.persona p
+LEFT JOIN 
+    agenda.email e ON p.dni = e.dni
+GROUP BY 
+    p.dni, p.nombre, p.apellido1, p.apellido2, p.edad
+]]></query>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="edad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="edad"/>
+		<property name="com.jaspersoft.studio.field.label" value="edad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="login" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="login"/>
+		<property name="com.jaspersoft.studio.field.label" value="login"/>
+	</field>
+	<variable name="totalPersonas" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{dni}]]></expression>
+	</variable>
+	<variable name="edadTotal" calculation="Sum" class="java.lang.Integer">
+		<expression><![CDATA[$F{edad}]]></expression>
+	</variable>
+	<variable name="edadMedia" class="java.lang.Double">
+		<expression><![CDATA[$V{edadTotal} / (double) $V{totalPersonas}]]></expression>
+	</variable>
+	<variable name="PersonasEnPaginaActual" resetType="Page" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{dni}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="98" splitType="Stretch">
+		<element kind="staticText" uuid="5f14e87f-7dd8-4934-9e66-ede0bfb269a3" x="180" y="0" width="380" height="98" fontSize="72.0" hTextAlign="Center">
+			<text><![CDATA[Agenda]]></text>
+		</element>
+		<element kind="image" uuid="b3e462bc-96c3-42d9-8933-f7032017b6d0" x="20" y="0" width="110" height="98">
+			<expression><![CDATA[$P{IMAGE_PATH} + "agenda.png"]]></expression>
+		</element>
+	</title>
+	<detail>
+		<band height="166" splitType="Stretch">
+			<element kind="textField" uuid="62a67bea-9c88-4bc2-a8f8-a995036f295e" x="240" y="10" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{dni}]]></expression>
+			</element>
+			<element kind="staticText" uuid="d8c29f68-98fc-415f-a466-f88c11ed6cb2" x="100" y="10" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[DNI:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="5e116300-44db-48e3-90c9-85e9a738ab6f" x="240" y="30" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{nombre}]]></expression>
+			</element>
+			<element kind="staticText" uuid="eeb318ee-95f8-4807-a9fe-c0d04859b765" x="100" y="30" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[NOMBRE:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="a2e91b11-9e96-45b3-9283-e2bbcd126944" x="240" y="50" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{apellido1}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="447df5f5-c89d-45c4-b194-c90b4a8f1ddb" x="100" y="50" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[PRIMER APELLIDO:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="ebc3563d-7ae9-4435-a271-678f7af216b8" x="240" y="70" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{apellido2}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="cf41bd79-0f9d-4723-8cec-0ff47c80be43" x="100" y="70" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[SEGUNDO APELLIDO:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="1c50fd11-2b9f-4a83-aa0b-5915594f4c73" x="240" y="90" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{edad}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="b367edfa-b32c-489f-aa40-5eb07f677a8f" x="100" y="90" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[EDAD:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="1b6ef4b6-159e-459f-8e10-6fac2562739b" x="240" y="110" width="100" height="20" bold="true">
+				<expression><![CDATA[$F{login}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="staticText" uuid="5541a9f7-ec3f-43d5-bc47-830fcd7ae1be" x="100" y="110" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[LOGIN:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="image" uuid="e4a37b56-a023-4077-99fc-a432b645cfd5" x="20" y="50" width="50" height="50">
+				<expression><![CDATA[$P{IMAGE_PATH} + "persona.png"]]></expression>
+			</element>
+			<element kind="line" uuid="7f8ec305-e66e-466b-ac9e-049abfe1d47c" x="0" y="160" width="549" height="5">
+				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				<pen lineWidth="2.0"/>
+			</element>
+			<element kind="staticText" uuid="4188f85a-4477-4864-9cf1-d3c1475c8872" x="100" y="130" width="120" height="20" hTextAlign="Right">
+				<text><![CDATA[AÑO DE NACIMIENTO:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="12990c13-170a-46ef-9f6e-11e0296332ed" x="240" y="130" width="100" height="20" bold="true">
+				<expression><![CDATA[new Integer(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)) - $F{edad}
+]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="69" splitType="Stretch">
+		<element kind="textField" uuid="664d8887-a1e7-49f6-8809-ea1c66dd2ab2" x="0" y="0" width="549" height="20" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA["Número de registros en esta página: "+$V{PersonasEnPaginaActual}]]></expression>
+		</element>
+		<element kind="rectangle" uuid="912bcc4e-eff8-49a4-bcc2-b1c389e90fef" x="0" y="30" width="549" height="19" backcolor="#769997">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="textField" uuid="8383fdc8-002d-489e-9ad3-8d974fcb197f" x="5" y="33" width="140" height="15" forecolor="#FFFFFF" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.text.SimpleDateFormat("EEEE dd MMMM yyyy", new java.util.Locale("es", "ES")).format(new java.util.Date())
+]]></expression>
+		</element>
+		<element kind="textField" uuid="ed919fde-a25d-4efa-8b61-d4a41fb68a14" x="370" y="33" width="168" height="15" forecolor="#FFFFFF" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA["Pag " + $V{PAGE_NUMBER} + " of " + $V{PAGE_COUNT}
+]]></expression>
+		</element>
+		<element kind="line" uuid="df22840d-e8fb-44c1-bf79-85b9b0054022" x="0" y="0" width="548" height="5">
+			<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+			<pen lineWidth="1.0"/>
+		</element>
+	</pageFooter>
+	<summary height="161" splitType="Stretch">
+		<element kind="ellipse" uuid="1a1f7d57-5acf-4839-9531-e221bdc26bf8" x="110" y="10" width="290" height="115" backcolor="#53C4ED"/>
+		<element kind="staticText" uuid="150d413b-e879-4536-a740-43535d90a6b8" x="160" y="28" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Right">
+			<text><![CDATA[Número de personas:]]></text>
+		</element>
+		<element kind="staticText" uuid="0e05fab8-70cf-465d-8dd5-fc5f4b1599ab" x="160" y="68" width="100" height="30" forecolor="#FFFFFF" hTextAlign="Right">
+			<text><![CDATA[Edad Media:]]></text>
+		</element>
+		<element kind="textField" uuid="8723db0f-5344-49c5-965e-9ed25fafc8f0" x="270" y="28" width="90" height="30" forecolor="#FFFFFF">
+			<expression><![CDATA[$V{totalPersonas}]]></expression>
+		</element>
+		<element kind="textField" uuid="0c9686f6-1363-418f-8386-740a0964ca69" x="270" y="68" width="90" height="30" forecolor="#FFFFFF">
+			<expression><![CDATA[new java.text.DecimalFormat("#.00").format($V{edadMedia})
+]]></expression>
+		</element>
+	</summary>
+</jasperReport>
