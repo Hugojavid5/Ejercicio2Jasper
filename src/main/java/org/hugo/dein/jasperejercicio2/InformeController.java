@@ -92,7 +92,7 @@ public class InformeController {
             db = new ConexionBBDD();
 
             // Cargar el archivo Jasper del informe
-            InputStream reportStream = db.getClass().getResourceAsStream("/jasper/Personas.jasper");
+            InputStream reportStream = db.getClass().getResourceAsStream("/Jasper/Personas.jasper");
 
             // Verificar si el archivo fue encontrado
             if (reportStream == null) {

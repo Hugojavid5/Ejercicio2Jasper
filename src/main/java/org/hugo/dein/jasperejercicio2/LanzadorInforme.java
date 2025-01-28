@@ -25,7 +25,7 @@ public class LanzadorInforme extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Cargar el archivo FXML que contiene la interfaz de usuario
-        FXMLLoader fxmlLoader = new FXMLLoader(LanzadorInforme.class.getResource("/fxml/ventana.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LanzadorInforme.class.getResource("/fxml/informe.fxml"));
 
         // Crear la escena con el archivo FXML cargado
         Scene scene = new Scene(fxmlLoader.load());
